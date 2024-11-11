@@ -42,6 +42,10 @@ This project is a VWAP (Volume Weighted Average Price) calculation stream using 
    docker run -p 8080:8080 vwap-calculation-stream
    ```
 
+### Sample output in Terminal
+---
+![Image](data/output.png?raw=true)
+
 ## Key Components
 
 ### VWAPFlinkJobService
