@@ -35,6 +35,10 @@ public class VWAPFlinkJobService  implements CommandLineRunner {
 
     @Value("${flink.bufferTimeout}")
     private long bufferTimeout;
+
+    @Value("${vwap.window.time}")
+    private long windowTime;
+
     @Autowired
     protected VWAPCalculatorService vwapCalculatorService;
 
@@ -59,14 +63,14 @@ public class VWAPFlinkJobService  implements CommandLineRunner {
                                     .withTimestampAssigner((event, timestamp) -> event.getTimestamp()) // Use the actual timestamp field from PriceData
                     ).map(priceData -> {
                         log.info("Currency Pair: " + priceData.getCurrencyPair() +
-                                ", Timestamp: " + priceData.getTimestamp()+  ", Price: " +priceData.getPrice()+ ", Volume: " + priceData.getVolume());
+                                ", Timestamp: " + priceData.getTimestamp()+  ", Price: " + priceData.getPrice()+ ", Volume: " + priceData.getVolume());
                         return priceData;
                     });;
 
 
             priceStream
                     .keyBy(PriceData::getCurrencyPair)
-                    .timeWindow(org.apache.flink.streaming.api.windowing.time.Time.seconds(10))  // 1-hour tumbling window
+                    .timeWindow(org.apache.flink.streaming.api.windowing.time.Time.seconds(windowTime))  // 1-hour tumbling window
                     .apply(vwapCalculatorService)
                     .addSink(new VWAPSink());
 
