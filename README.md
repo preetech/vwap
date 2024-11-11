@@ -75,7 +75,7 @@ vwap.window.time=3600
 - flink.checkpointInterval=60000: This setting enables checkpointing every 60 seconds, ensuring that the application can recover from failures by resuming from the last checkpoint.  
 - flink.parallelism=4: This setting configures the application to use 4 parallel instances for processing, distributing the load and improving performance.  
 - flink.bufferTimeout=100: This setting specifies a buffer timeout of 100 milliseconds, balancing latency and throughput for efficient data processing.
-- vwap.window.time=3600: This lets you set the time window for calculating VWAP. Can be changes to 5 sec for testing the app.
+- <strong>vwap.window.time=3600: This lets you set the time window for calculating VWAP. Can be changed to 5 sec for testing the app.</strong>
 
 #### These configuration values make the application more resilient and production-ready by enhancing fault tolerance, ensuring accurate event-time processing, and optimizing resource utilization. This setup helps in maintaining high availability and reliability, which are critical for production environments.
 
