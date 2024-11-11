@@ -1,3 +1,5 @@
+[![License](https://img.shields.io/badge/license-ANZ-blue)](https://img.shields.io/badge/license-ANZ-blue)
+[![Release](https://img.shields.io/badge/release-0.0.1-orange)](https://img.shields.io/badge/release-0.0.1-orange)
 
 # VWAP Calculation Stream
 
